@@ -6,6 +6,12 @@ public class Expense {
     private String name;
     private double cost;
 
+    public Expense(String date, String name, String cost) {
+        this.date = date;
+        this.name = name;
+        this.cost = Double.parseDouble(cost);
+    }
+
     public String getDate() {
         return date;
     }
