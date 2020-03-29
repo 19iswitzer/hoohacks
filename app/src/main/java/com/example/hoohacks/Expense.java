@@ -9,7 +9,7 @@ public class Expense {
     public Expense(String date, String name, String cost) {
         this.date = date;
         this.name = name;
-        this.cost = Double.parseDouble(cost);
+        this.cost = Double.parseDouble(cost.substring(1));
     }
 
     public String getDate() {
