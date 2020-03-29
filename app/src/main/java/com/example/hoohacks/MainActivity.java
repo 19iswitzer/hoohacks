@@ -37,6 +37,9 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -46,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private Button weeklyReportButton;
     private Button manageCostButton;
     private Button pastExpensesButton;
-    private Expense[] expenses;
+    private ArrayList<Expense> expenses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,13 +136,14 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<String> temp;
         temp = data[0];
-        expenses = new Expense[temp.size()];
 
         // make global list of expenses to use
-        for (int i = 0; i < expenses.length; i++) {
+        for (int i = 0; i < temp.size(); i++) {
             String[] splitLine = temp.get(i).split(" ");
-            expenses[i] = new Expense(splitLine[0], splitLine[1], splitLine[2]);
+            expenses.add(new Expense(splitLine[0], splitLine[1], splitLine[2]));
         }
+        // sort based on date expense was done
+        Collections.sort(expenses);
     }
 
     private void openPastExpenses() {
