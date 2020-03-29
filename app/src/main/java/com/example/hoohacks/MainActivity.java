@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private Button weeklyReportButton;
     private Button manageCostButton;
     private Button pastExpensesButton;
-    private ArrayList<Expense> expenses;
+    private static ArrayList<Expense> expenses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,5 +161,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WeeklyReportActivity.class);
         startActivity(intent);
 
+    }
+
+    public static ArrayList<Expense> getExpenses() {
+        return expenses;
     }
 }
