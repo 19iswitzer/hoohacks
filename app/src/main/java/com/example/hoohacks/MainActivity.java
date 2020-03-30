@@ -101,24 +101,6 @@ public class MainActivity extends AppCompatActivity {
         updateExpenses();
     }
 
-    private void openPastExpenses() {
-        Intent intent = new Intent(this, PastExpenses.class);
-        startActivity(intent);
-    }
-
-    private void openCostManager() {
-        Intent intent = new Intent(this, ManageCosts.class);
-        startActivity(intent);
-    }
-
-    public void openWeeklyReport() {
-        Intent intent = new Intent(this, WeeklyReportActivity.class);
-        startActivity(intent);
-    }
-
-    public static ArrayList<Expense> getExpenses() {
-        return updateExpenses();
-    }
 
     public static ArrayList<Expense> updateExpenses() {
         final ArrayList<String>[] data = new ArrayList[]{new ArrayList<>()};
@@ -161,9 +143,9 @@ public class MainActivity extends AppCompatActivity {
             String[] splitLine = temp.get(i).split(" ");
             expenses.add(new Expense(splitLine[0], splitLine[1], splitLine[2]));
         }
+        Collections.sort(expenses);
         return expenses;
         // sort based on date expense was done
-        Collections.sort(expenses);
     }
 
     private void openPastExpenses() {
