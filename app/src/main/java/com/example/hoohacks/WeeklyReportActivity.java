@@ -2,6 +2,7 @@ package com.example.hoohacks;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class WeeklyReportActivity extends AppCompatActivity {
 
@@ -42,8 +44,8 @@ public class WeeklyReportActivity extends AppCompatActivity {
 
     // todo get budget from somewhere
     private String getUnderOver() {
-        int tempBudget = 200;
-        int tempBalance = 100;
+        int tempBudget = 100 ;
+        int tempBalance = 50;
 
         if (tempBalance <= tempBalance) {
             return "Stayed under budget by $" + (tempBudget - tempBalance) + ". Good Job!";
