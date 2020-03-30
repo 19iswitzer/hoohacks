@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
             String[] splitLine = temp.get(i).split(" ");
             expenses.add(new Expense(splitLine[0], splitLine[1], splitLine[2]));
         }
-        Collections.sort(expenses);
         return expenses;
         // sort based on date expense was done
     }
