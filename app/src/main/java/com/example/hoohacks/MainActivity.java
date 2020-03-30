@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private Button weeklyReportButton;
     private Button manageCostButton;
     private Button pastExpensesButton;
-    static private ArrayList<Expense> expenses = new ArrayList<>();
 
     private static GoogleCredentials credentials = null;
+    private static ArrayList<Expense> expenses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,10 +155,35 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> temp;
         temp = data[0];
         expenses.clear();
+
+        // make global list of expenses to use
         for (int i = 0; i < temp.size(); i++) {
             String[] splitLine = temp.get(i).split(" ");
             expenses.add(new Expense(splitLine[0], splitLine[1], splitLine[2]));
         }
+        return expenses;
+        // sort based on date expense was done
+        Collections.sort(expenses);
+    }
+
+    private void openPastExpenses() {
+        Intent intent = new Intent(this, PastExpenses.class);
+        startActivity(intent);
+    }
+
+    private void openCostManager() {
+        Intent intent = new Intent(this, ManageCosts.class);
+        startActivity(intent);
+    }
+
+
+    public void openWeeklyReport() {
+        Intent intent = new Intent(this, WeeklyReportActivity.class);
+        startActivity(intent);
+
+    }
+
+    public static ArrayList<Expense> getExpenses() {
         return expenses;
     }
 }
