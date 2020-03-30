@@ -34,29 +34,5 @@
             android:text="Past Expenses" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="388dp"
-        android:layout_marginTop="200dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <TextView
-            android:id="@+id/currentBalText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Amount left in weekly budget" />
-
-        <TextView
-            android:id="@+id/curBalNum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0" />
-
-    </LinearLayout>
-
 
 </RelativeLayout>
