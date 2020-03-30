@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Student\\AndroidStudioProjects\\HooHacks\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h480dp-land-v13\\values-h480dp-land-v13.xml",
+            "outputFile": "C:\\Users\\Student\\Desktop\\hoohacks\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h480dp-land-v13\\values-h480dp-land-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Student\\.gradle\\caches\\transforms-2\\files-2.1\\09884e4f09dcb45cba6db7aeffefa6be\\material-1.1.0\\res\\values-h480dp-land-v13\\values-h480dp-land-v13.xml",

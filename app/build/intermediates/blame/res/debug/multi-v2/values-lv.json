@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Student\\AndroidStudioProjects\\HooHacks\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
+            "outputFile": "C:\\Users\\Student\\Desktop\\hoohacks\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-lv\\values-lv.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Student\\.gradle\\caches\\transforms-2\\files-2.1\\a08b64a99db3029475fd8e8a7d361821\\navigation-ui-2.2.1\\res\\values-lv\\values-lv.xml",

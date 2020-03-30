@@ -1,6 +1,6 @@
 package com.example.hoohacks;
 
-public class Expense {
+public class Expense implements Comparable<Expense> {
 
     private String date;
     private String name;
@@ -22,5 +22,10 @@ public class Expense {
 
     public double getCost() {
         return cost;
+    }
+
+    @Override
+    public int compareTo(Expense o) {
+        return this.date.compareTo(o.date);
     }
 }

@@ -1903,6 +1903,7 @@ string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
 string default_web_client_id
+string edit_msg
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -1956,6 +1957,7 @@ string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
 string next
 string password_toggle_content_description
+string past_expenses
 string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
