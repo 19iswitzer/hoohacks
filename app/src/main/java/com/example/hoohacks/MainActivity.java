@@ -99,62 +99,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         updateExpenses();
-//        GoogleCredentials credentials = null;
-//        InputStream test = null;
-//        try {
-//            test = getAssets().open("credentialskey.json");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        try {
-//            credentials = GoogleCredentials.fromStream(test);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        FirebaseOptions options = new FirebaseOptions.Builder()
-//                .setCredentials(credentials)
-//                .setProjectId("advance-elixir-272521")
-//                .build();
-//        FirebaseApp.initializeApp(options);
-//
-//        final ArrayList<String>[] data = new ArrayList[]{new ArrayList<>()};
-//
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Firestore db = FirestoreClient.getFirestore();
-//                    ApiFuture<QuerySnapshot> query = db.collection("users").get();
-//                    String t = db.collection("users").document("user1").getId();
-//                    QuerySnapshot querySnapshot = null;
-//                    try {
-//                        querySnapshot = query.get();
-//                    } catch (ExecutionException | InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
-//                    data[0] = (ArrayList<String>) documents.get(0).getData().get("expenses");
-//
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//
-//        thread.start();
-//        try {
-//            thread.join();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        ArrayList<String> temp;
-//        temp = data[0];
-//        // make global list of expenses to use
-//        for (int i = 0; i < temp.size(); i++) {
-//            String[] splitLine = temp.get(i).split(" ");
-//            expenses.add(new Expense(splitLine[0], splitLine[1], splitLine[2]));
-//        }
     }
 
     private void openPastExpenses() {
@@ -177,12 +121,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static ArrayList<Expense> updateExpenses() {
-//        FirebaseOptions options = new FirebaseOptions.Builder()
-//                .setCredentials(credentials)
-//                .setProjectId("advance-elixir-272521")
-//                .build();
-//        FirebaseApp.initializeApp(options);
-
         final ArrayList<String>[] data = new ArrayList[]{new ArrayList<>()};
 
         Thread thread = new Thread(new Runnable() {

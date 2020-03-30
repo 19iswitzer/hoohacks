@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+//past expenses
 public class PastExpenses extends AppCompatActivity {
 
     private Switch sortSwitch;
