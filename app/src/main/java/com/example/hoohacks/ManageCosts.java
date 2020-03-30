@@ -2,9 +2,11 @@ package com.example.hoohacks;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -42,5 +44,11 @@ public class ManageCosts extends AppCompatActivity {
     }
 
     private void processExpense() {
+        EditText editText = findViewById(R.id.editText);
+        String text = editText.getText().toString();
+        //System.out.println("money: " + text);
+        MainActivity.subtractFromBudget(Double.parseDouble(text));
+        //Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
     }
 }

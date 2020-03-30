@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private Button weeklyReportButton;
     private Button manageCostButton;
     private Button pastExpensesButton;
+    private static double budget = 1000;
 
     private static GoogleCredentials credentials = null;
     private static ArrayList<Expense> expenses = new ArrayList<>();
@@ -56,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView textView = findViewById(R.id.curBalNum);
+        textView.setText("" + budget);
 
         InputStream test = null;
         try {
@@ -166,5 +171,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Expense> getExpenses() {
         return expenses;
+    }
+
+    public static void subtractFromBudget(double c) {
+        budget -= c;
     }
 }
