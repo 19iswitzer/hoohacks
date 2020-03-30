@@ -27,7 +27,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="line1\nline 2\nline3" />
+            android:text="@string/past_expenses" />
 
     </LinearLayout>
 

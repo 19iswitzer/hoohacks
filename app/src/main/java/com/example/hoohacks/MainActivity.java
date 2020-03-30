@@ -37,22 +37,42 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
-
+//yes
 public class MainActivity extends AppCompatActivity {
 
     private Button weeklyReportButton;
     private Button manageCostButton;
     private Button pastExpensesButton;
-    private Expense[] expenses;
+    static private ArrayList<Expense> expenses = new ArrayList<>();
+
+    private static GoogleCredentials credentials = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        InputStream test = null;
+        try {
+            test = getAssets().open("credentialskey.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            credentials = GoogleCredentials.fromStream(test);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FirebaseOptions options = new FirebaseOptions.Builder()
+                .setCredentials(credentials)
+                .setProjectId("advance-elixir-272521")
+                .build();
+        FirebaseApp.initializeApp(options);
 
         weeklyReportButton = findViewById(R.id.weeklyReportButton);
         weeklyReportButton.setOnClickListener(new View.OnClickListener() {
@@ -78,26 +98,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        updateExpenses();
+    }
 
-        GoogleCredentials credentials = null;
-        System.out.println("hey");
-        InputStream test = null;
-        try {
-            test = getAssets().open("credentialskey.json");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            credentials = GoogleCredentials.fromStream(test);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        FirebaseOptions options = new FirebaseOptions.Builder()
-                .setCredentials(credentials)
-                .setProjectId("advance-elixir-272521")
-                .build();
-        FirebaseApp.initializeApp(options);
+    private void openPastExpenses() {
+        Intent intent = new Intent(this, PastExpenses.class);
+        startActivity(intent);
+    }
 
+    private void openCostManager() {
+        Intent intent = new Intent(this, ManageCosts.class);
+        startActivity(intent);
+    }
+
+    public void openWeeklyReport() {
+        Intent intent = new Intent(this, WeeklyReportActivity.class);
+        startActivity(intent);
+    }
+
+    public static ArrayList<Expense> getExpenses() {
+        return updateExpenses();
+    }
+
+    public static ArrayList<Expense> updateExpenses() {
         final ArrayList<String>[] data = new ArrayList[]{new ArrayList<>()};
 
         Thread thread = new Thread(new Runnable() {
@@ -110,9 +133,7 @@ public class MainActivity extends AppCompatActivity {
                     QuerySnapshot querySnapshot = null;
                     try {
                         querySnapshot = query.get();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
+                    } catch (ExecutionException | InterruptedException e) {
                         e.printStackTrace();
                     }
                     List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
@@ -133,29 +154,11 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<String> temp;
         temp = data[0];
-        expenses = new Expense[temp.size()];
-
-        // make global list of expenses to use
-        for (int i = 0; i < expenses.length; i++) {
+        expenses.clear();
+        for (int i = 0; i < temp.size(); i++) {
             String[] splitLine = temp.get(i).split(" ");
-            expenses[i] = new Expense(splitLine[0], splitLine[1], splitLine[2]);
+            expenses.add(new Expense(splitLine[0], splitLine[1], splitLine[2]));
         }
-    }
-
-    private void openPastExpenses() {
-        Intent intent = new Intent(this, PastExpenses.class);
-        startActivity(intent);
-    }
-
-    private void openCostManager() {
-        Intent intent = new Intent(this, ManageCosts.class);
-        startActivity(intent);
-    }
-
-
-    public void openWeeklyReport() {
-        Intent intent = new Intent(this, WeeklyReportActivity.class);
-        startActivity(intent);
-
+        return expenses;
     }
 }
